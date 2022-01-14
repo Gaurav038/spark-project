@@ -32,7 +32,7 @@ const connection = mongoose.connect(
   connection
     .then((response) => {
       console.log("Database has been connected!");
-      app.listen(5000, () => {
+      app.listen(PORT, () => {
         console.log(`Server is running on Port: 5000`);
       });
     })
