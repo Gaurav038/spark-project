@@ -6,9 +6,6 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-const DB_USERNAME = process.env.DB_USERNAME;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-
 const { indexController } = require("./controllers/indexController");
 const {  customerDisplayController} = require("./controllers/customerDisplayController");
 const {displayTransactionsController,} = require("./controllers/displayTransactionsController");
@@ -21,8 +18,8 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
 const connection = mongoose.connect(
-    `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.ydyc5.mongodb.net/Bank?retryWrites=true&w=majority`,
-    {
+      process.env.DB_URI,
+  {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
